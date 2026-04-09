@@ -10,7 +10,7 @@ with open(filename, newline="", encoding="utf-8") as f:
     for row in reader:
         responses.append(row)
 
-
+# Function to count the number of words in a response
 def count_words(response):
     """Count the number of words in a response string.
 
@@ -26,6 +26,7 @@ print("-" * 75)
 
 word_counts = []
 
+# Loop through each row in the responses list
 for row in responses:
     participant = row["participant_id"]
     role = row["role"]

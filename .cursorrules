@@ -1,0 +1,52 @@
+Project context
+- This repository contains HCDE coursework with small, self-contained weekly exercises.
+- Prefer clear, beginner-friendly code and explanations over clever abstractions.
+
+Directory structure
+- Keep this directory map accurate. If files/folders are added, renamed, moved, or deleted, update this section in the same change.
+- Only include project files/directories (exclude `.git/` internals and temporary OS files).
+
+```
+hcde530/
+  README.md
+  .cursorrules
+  Week2/
+    demo_responses.csv
+    demo_word_count.py
+    dashboard.html
+```
+
+General coding standards
+- Keep changes scoped to the requested task; avoid broad refactors unless explicitly asked.
+- Preserve existing behavior unless the user asks for a behavior change.
+- Use descriptive names and straightforward control flow.
+- Add short comments only when logic is not obvious.
+
+Python conventions
+- Target Python 3.10+ syntax.
+- Prefer small pure functions for data transforms.
+- Include `if __name__ == "__main__":` for runnable scripts.
+- Use `csv`/`pathlib` from the standard library before adding dependencies.
+- Handle file I/O errors with clear user-facing messages.
+
+CSV and analysis workflow
+- Assume CSV files may contain quoted commas and newlines; parse robustly.
+- Keep raw input files unchanged; write derived outputs to new files.
+- When reporting metrics, include both counts and percentages where helpful.
+- Make text normalization steps explicit (case, punctuation, stop words).
+
+HTML/CSS/JS dashboard conventions
+- Use semantic HTML and keep assets local (no external CDN dependencies unless requested).
+- Keep JavaScript framework-free unless the user asks for a library.
+- Show loading and error states for CSV/data fetch operations.
+- Keep styles readable and responsive with simple layout rules.
+
+Git hygiene
+- Do not commit secrets, local env files, or OS artifacts (for example `.DS_Store`).
+- Prefer focused commits with clear messages describing intent.
+- If generated files are included, mention why they are committed.
+
+Communication expectations
+- When making file changes, briefly state what changed and how to run/verify.
+- If an instruction is ambiguous, ask one concise clarifying question before risky changes.
+- After structural changes, include a one-line note confirming the directory map in this file was reviewed and updated.
