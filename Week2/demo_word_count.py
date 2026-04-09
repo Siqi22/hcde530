@@ -1,3 +1,9 @@
+"""Load participant responses from CSV, count words per response, print a table and summary stats.
+
+Run from the Week2 folder so demo_responses.csv is beside this script:
+    cd Week2 && python3 demo_word_count.py
+"""
+
 import csv
 
 

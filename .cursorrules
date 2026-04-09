@@ -13,7 +13,9 @@ hcde530/
   Week2/
     demo_responses.csv
     demo_word_count.py
+    app_review_summary.py
     dashboard.html
+    week2.md
 ```
 
 General coding standards
