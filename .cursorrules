@@ -16,6 +16,11 @@ hcde530/
     app_review_summary.py
     dashboard.html
     week2.md
+  Week3/
+    clean_responses.py
+    count_demo_roles.py
+    demo_clean_responses.py
+    demo_responses_clean.csv
 ```
 
 General coding standards
