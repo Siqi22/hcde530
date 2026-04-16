@@ -74,94 +74,99 @@ for name, score in top5:
 
 def clean_rows(rows):
     """
-    Clean survey data:
-    - Normalize role names
-    - Convert numeric fields
-    - Skip rows with invalid numbers
-    - Fill missing names
+    Clean survey data while preserving all original columns.
+    - Normalize role to title case
+    - Skip rows with blank role
+    - Skip rows with invalid experience_years
+    - Skip rows with invalid satisfaction_score
+    - Fill missing participant_name with "Unknown"
     """
     cleaned = []
 
     for row in rows:
+        cleaned_row = row.copy()
+
+        # Clean participant name
+        cleaned_row["participant_name"] = (
+            (cleaned_row.get("participant_name") or "").strip() or "Unknown"
+        )
+
         # Clean role
-        role = (row.get("role") or "").strip().title()
-        if not role:
+        cleaned_row["role"] = (cleaned_row.get("role") or "").strip().title()
+        if not cleaned_row["role"]:
             continue
 
-        # Clean experience
-        raw_exp = (row.get("experience_years") or "").strip()
+        # Clean experience_years
+        raw_exp = (cleaned_row.get("experience_years") or "").strip()
         try:
-            experience = int(raw_exp)
+            cleaned_row["experience_years"] = int(raw_exp)
         except ValueError:
             continue
 
-        # Clean score
-        raw_score = (row.get("satisfaction_score") or "").strip()
+        # Clean satisfaction_score
+        raw_score = (cleaned_row.get("satisfaction_score") or "").strip()
         try:
-            score = int(raw_score)
+            cleaned_row["satisfaction_score"] = int(raw_score)
         except ValueError:
             continue
 
-        # Clean name
-        name = (row.get("participant_name") or "").strip() or "Unknown"
-
-        cleaned.append({
-            "participant_name": name,
-            "role": role,
-            "experience_years": experience,
-            "satisfaction_score": score
-        })
+        cleaned.append(cleaned_row)
 
     return cleaned
 
 
 def write_clean_csv(cleaned_rows, output_file):
     """
-    Write cleaned survey data to a new CSV file.
+    Write cleaned survey data to a new CSV file using all columns.
     """
-    fieldnames = ["participant_name", "role", "experience_years", "satisfaction_score"]
+    if not cleaned_rows:
+        return
+
+    fieldnames = list(cleaned_rows[0].keys())
 
     with open(output_file, "w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(cleaned_rows)
 
-cleaned_rows = clean_rows(rows)
-write_clean_csv(cleaned_rows, "week3_survey_cleaned.csv")
 
 def summarize_data(rows):
     """
     Generate a plain-language summary of cleaned survey data.
-
-    Args:
-        rows (list of dict): Cleaned survey data.
-
-    Returns:
-        str: A summary including row count, unique roles, and empty name count.
     """
     row_count = len(rows)
 
-    # Unique roles
     roles = set()
+    empty_names = 0
+
     for row in rows:
         role = (row.get("role") or "").strip()
         if role:
             roles.add(role)
 
-    # Count empty names
-    empty_names = 0
-    for row in rows:
         name = (row.get("participant_name") or "").strip()
         if not name:
             empty_names += 1
 
-    summary = (
-        f"The dataset contains {row_count} rows. "
-        f"There are {len(roles)} unique roles: {', '.join(sorted(roles))}. "
-        f"There are {empty_names} rows with missing participant names."
+    return (
+        f"The cleaned dataset contains {row_count} rows. "
+        f"The unique roles are: {', '.join(sorted(roles))}. "
+        f"There are {empty_names} rows with empty participant_name fields."
     )
 
-    return summary
+
+# Load original CSV
+filename = "week3_survey_messy.csv"
+rows = []
+
+with open(filename, newline="", encoding="utf-8") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        rows.append(row)
+
+# Clean, write, summarize
+cleaned_rows = clean_rows(rows)
+write_clean_csv(cleaned_rows, "week3_survey_cleaned.csv")
 
 summary = summarize_data(cleaned_rows)
 print(summary)
