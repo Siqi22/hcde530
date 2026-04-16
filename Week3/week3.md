@@ -1,0 +1,2 @@
+C5 — Data Cleaning and Preparation:
+I implemented a data cleaning pipeline that standardizes role names, filters out invalid numeric values, and ensures missing participant names are handled consistently. I also preserved the full dataset structure while writing the cleaned data to a new CSV, enabling reliable downstream analysis. This demonstrates my ability to transform messy, real-world data into a structured and usable format.
