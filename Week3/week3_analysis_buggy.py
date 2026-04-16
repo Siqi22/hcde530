@@ -31,14 +31,15 @@ total_experience = 0
 valid_experience_count = 0
 
 for row in rows:
-    raw_experience = (row.get("experience_years") or "").strip()
+    raw = (row.get("experience_years") or "").strip()
     try:
-        total_experience += int(raw_experience)
+        years = int(raw)
+        total_experience += years
         valid_experience_count += 1
     except ValueError:
         continue
 
-if valid_experience_count:
+if valid_experience_count > 0:
     avg_experience = total_experience / valid_experience_count
     print(f"\nAverage years of experience: {avg_experience:.1f}")
 else:
@@ -48,13 +49,13 @@ else:
 scored_rows = []
 for row in rows:
     raw_score = (row.get("satisfaction_score") or "").strip()
-    if not raw_score:
-        continue
+    # if not raw_score:
+    #     continue
     try:
         score = int(raw_score)
     except ValueError:
         continue
-    participant_name = (row.get("participant_name") or "Unknown").strip()
+    participant_name = (row.get("participant_name") or "").strip() or "Unknown"
     scored_rows.append((participant_name, score))
 
 scored_rows.sort(key=lambda x: x[1], reverse=True)
