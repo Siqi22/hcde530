@@ -128,3 +128,40 @@ def write_clean_csv(cleaned_rows, output_file):
 
 cleaned_rows = clean_rows(rows)
 write_clean_csv(cleaned_rows, "week3_survey_cleaned.csv")
+
+def summarize_data(rows):
+    """
+    Generate a plain-language summary of cleaned survey data.
+
+    Args:
+        rows (list of dict): Cleaned survey data.
+
+    Returns:
+        str: A summary including row count, unique roles, and empty name count.
+    """
+    row_count = len(rows)
+
+    # Unique roles
+    roles = set()
+    for row in rows:
+        role = (row.get("role") or "").strip()
+        if role:
+            roles.add(role)
+
+    # Count empty names
+    empty_names = 0
+    for row in rows:
+        name = (row.get("participant_name") or "").strip()
+        if not name:
+            empty_names += 1
+
+    summary = (
+        f"The dataset contains {row_count} rows. "
+        f"There are {len(roles)} unique roles: {', '.join(sorted(roles))}. "
+        f"There are {empty_names} rows with missing participant names."
+    )
+
+    return summary
+
+summary = summarize_data(cleaned_rows)
+print(summary)
