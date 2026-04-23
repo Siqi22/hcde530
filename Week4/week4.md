@@ -1,0 +1,13 @@
+**C4 — APIs and data acquisition**
+
+I used Python to pull structured JSON from a web API, read Spoonacular’s documentation to choose an endpoint and query parameters, and turn the response into a CSV file I can open in a spreadsheet or reuse in analysis. Beyond the course demo API, I integrated **Spoonacular’s recipe search** (`/recipes/complexSearch`): I request pasta recipes with a **maximum fat** filter and a small result count, parse the JSON, and **flatten** each recipe object so nested fields (for example nutrition summaries) become readable column names instead of one opaque JSON cell. My key lives in a repo-root **`.env`** file as `SPOONACULAR_API_KEY`, and **`.gitignore`** lists `.env` so the secret is not pushed to GitHub. The complex-search endpoint returns metadata such as `offset`, `number`, and `totalResults`, plus a **`results`** array of short recipe records (identifiers, titles, image URLs, and—when nutrient filters are used—compact nutrition snippets). I keep whatever fields the API sends, flatten them for CSV, and write **`spoonacular_pasta_search.csv`** next to the script so the pull is reproducible and documented in code comments. The script uses the standard library for HTTP and JSON: it matches the documented response shape, keeps the fields relevant to the search I defined, and saves derived data to a new file.
+
+This work shows I can acquire real structured data over the network safely and shape it for downstream use.
+
+---
+
+**HCD reflection — why this matters**
+
+Human-centered design depends on **evidence that matches people’s context**, not only on intuition. Public and partner APIs are one way to ground a design or research question in **current, structured information**—here, food data constrained by dietary parameters (fat) so the dataset reflects constraints people might actually care about in meal planning or health-informed interfaces. Calling an API forces me to be explicit about **what I am asking for** (parameters), **what I get back** (schema and limits), and **how I store and share it** (no secrets in the repo). That discipline matters when we work with personal or licensed data later: the habit of environment-based keys and ignored `.env` files is part of responsible practice with participants and stakeholders.
+
+Turning JSON into **flattened CSV** is a small human-centered choice too: it makes the same payload legible to teammates, instructors, or collaborators who are not reading raw JSON, which supports **transparency and critique** in design work. More broadly, learning to wire scripts to live services is how prototypes connect to **real catalogs, weather, health, or mobility data**—so explorations stay closer to lived experience instead of placeholder content alone.

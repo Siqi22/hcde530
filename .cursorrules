@@ -10,6 +10,7 @@ Directory structure
 hcde530/
   README.md
   .cursorrules
+  .gitignore
   Week2/
     demo_responses.csv
     demo_word_count.py
@@ -21,6 +22,11 @@ hcde530/
     count_demo_roles.py
     demo_clean_responses.py
     demo_responses_clean.csv
+  Week4/
+    fetch_ditto_pokeapi.py
+    fetch_reviews_category_helpful.py
+    fetch_spoonacular_pasta_search.py
+    week4.md
 ```
 
 General coding standards
