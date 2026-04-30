@@ -11,6 +11,7 @@ hcde530/
   README.md
   .cursorrules
   .gitignore
+  requirements.txt
   Week2/
     demo_responses.csv
     demo_word_count.py
@@ -27,6 +28,10 @@ hcde530/
     fetch_reviews_category_helpful.py
     fetch_spoonacular_pasta_search.py
     week4.md
+  Week5/
+    Teen_Mental_Health_Dataset.csv
+    teen mental health analysis.ipynb
+    week5.md
 ```
 
 General coding standards

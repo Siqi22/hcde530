@@ -1,0 +1,3 @@
+# HCDE 530 — install: pip install -r requirements.txt
+# Python 3.7.0: use pandas 1.1.x (1.2+ needs 3.7.1+; 2.x needs 3.8+).
+pandas>=1.1.0,<1.2
