@@ -1,0 +1,10 @@
+## Competency Claim
+
+
+**C3 — Data cleaning and file handling:** I analyzed **`clean_yrbs_2023.csv`**, a **course-cleaned YRBS-style extract** tied to **`mp1_data.py`**, instead of mixing raw codes without documentation. In **Sections 3 and 4** I restricted each question to **pairwise-complete rows** using **`dropna()`** on the variables in that analysis so **missing answers are excluded** from means and plots rather than treated as zeros.
+
+**C5 — Data analysis with pandas:** In **Section 3** I used **`groupby`**, **`agg`**, and small loops to print **counts and mean “yes” rates** for **Question 1** (`SocialMedia` with `Hopelessness`), **Question 2** (`CyberBullying` with `NotGoodMentalHealth`), and **Question 3** (sleep with `SocialMedia` and `Hopelessness`). **Section 4** reuses the same column pairs to build **summary tables** that feed **`fig1`–`fig3`**.
+
+**C6 — Data visualization:** I built **three charts in Python** with **`plotly.express`**: **Chart 1** is a **grouped bar chart** (`px.bar`, **`barmode="group"`**) so readers can compare **hopelessness** and **not-good mental health** side by side at **social-media 0 vs 1**; **Charts 2 and 3** are **single-series bar charts** of **proportions** for **cyberbullying** and **sleep** groups. Each figure has a **finding-focused title**, **readable axis labels**, and **percent formatting** on the *y* axis; the **chart rationale** cell explains why **bars** fit **categorical** comparisons (and why the write-up avoids claiming **causation**).
+
+**C7 — Critical evaluation and professional judgment:** After the tables in **Section 3** I added **interpretation markdown** that describes **patterns** in the data and reminds the reader that **correlation is not causation**. **Section 5** (above) summarizes results, notes what **surprised** me, proposes **next analyses** (e.g. **survey weights**, richer plots), and states **limitations** of **cross-sectional self-report** data before anyone misreads the charts as proof of intervention effects.
