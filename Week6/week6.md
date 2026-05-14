@@ -48,20 +48,8 @@ C6 is about **making an argument with a chart**, not only drawing a default grap
 
 ---
 
-## Strong competency claim (C6) — template you can paste into Canvas or `mp1.md`
+## competency claim (C6)
 
-**Replace `[YOUR-GITHUB-NOTEBOOK-LINK]`** with the link to your rendered notebook (or repo path) after publishing.
-
-> **C6 — Data visualization:** I built **three Python-generated charts** (saved as **`chart_1.png`**, **`chart_2.png`**, and **`chart_3.png`** in my repo’s **`Week6/`** folder) to support **three research questions** about **social media**, **cyberbullying**, and **sleep** in relation to **mental health / hopelessness**. I used **grouped vertical bars** for Chart 1 because I needed to compare **two binary outcomes** side by side across **two social-media groups**—a line would wrongly imply a continuous trend between 0 and 1. I used **simple bar charts** for Charts 2 and 3 because each question compares **one proportion** across **two clear categories** (cyberbullying yes/no; under 8 hours vs 8+ hours sleep). Every chart has a **finding-focused title** and **labeled percent axes** so the argument is readable without decoding variable names. The full **code, Plotly outputs, and markdown interpretations** are in my Jupyter notebook at **[YOUR-GITHUB-NOTEBOOK-LINK]**, including a **chart rationale** section that states what the reader should take away and what the analysis **cannot** prove from a cross-section.
+> **C6 — Data visualization:** I built **three Python-generated charts** (saved as **`chart_1.png`**, **`chart_2.png`**, and **`chart_3.png`** in my repo’s **`Week6/`** folder) to support **three research questions** about **social media**, **cyberbullying**, and **sleep** in relation to **mental health / hopelessness**. I used **grouped vertical bars** for Chart 1 because I needed to compare **two binary outcomes** side by side across **two social-media groups**—a line would wrongly imply a continuous trend between 0 and 1. I used **simple bar charts** for Charts 2 and 3 because each question compares **one proportion** across **two clear categories** (cyberbullying yes/no; under 8 hours vs 8+ hours sleep). Every chart has a **finding-focused title** and **labeled percent axes** so the argument is readable without decoding variable names.
 
 ---
-
-## Weak claim (what to avoid)
-
-> “I made charts in my notebook.”
-
-That version does not name the **chart types**, the **data structure**, the **finding**, or where a reader can **verify** the work on GitHub.
-
----
-
-*Directory map in `.cursorrules` was reviewed: `Week6/week6.md` added.*
